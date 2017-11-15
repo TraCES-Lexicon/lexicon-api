@@ -1,0 +1,72 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "An API that allows users to return accumulated results from different resources from their queries.\n## **NOTE** SNAPSHOT, Do not implement!\n## **NOTE** Will be superseded by https://swaggerhub.com/apis/sdruskat/traces-lexicon-api/1.0.0-SNAPSHOT\n",
+    "version" : "1.0.0-SNAPSHOT",
+    "title" : "Swagger 2.0 version of TraCES Ge'ez Lexicon API (unstable)",
+    "contact" : {
+      "name" : "Stephan Druskat",
+      "url" : "http://sdruskat.net"
+    },
+    "license" : {
+      "name" : "License: tba"
+    }
+  },
+  "paths" : {
+    "/query" : {
+      "get" : {
+        "summary" : "queries the API",
+        "description" : "Query the API to return an accumulated result",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "string",
+          "description" : "The query string",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "query",
+          "name" : "translit",
+          "description" : "Whether the query string is a transliteration (true) or a Fidäl string (false, default)",
+          "type" : "boolean",
+          "required" : false,
+          "default" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "schema" : {
+              "type" : "object",
+              "$ref" : "#/definitions/result"
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "result" : {
+      "type" : "object",
+      "properties" : {
+        "query" : {
+          "type" : "string",
+          "example" : "በስመ፡"
+        },
+        "fidael" : {
+          "type" : "string",
+          "example" : "በስመ፡"
+        },
+        "transliteration" : {
+          "type" : "string",
+          "example" : "ba-sǝma"
+        }
+      }
+    }
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/sdruskat/traces-lexicon-api-swagger-2.0/1.0.0-SNAPSHOT",
+  "schemes" : [ "https" ]
+}
