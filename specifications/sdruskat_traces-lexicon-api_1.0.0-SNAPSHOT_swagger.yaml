@@ -20,7 +20,7 @@ paths:
           description: The query string
           schema:
             type: string
-            example: በስመ፡
+            example: "በስመ፡"
           required: true
 
         - name: translit
