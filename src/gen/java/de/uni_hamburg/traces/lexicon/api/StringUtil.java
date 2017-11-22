@@ -1,6 +1,12 @@
 package de.uni_hamburg.traces.lexicon.api;
 
-@javax.annotation.Generated(value = "class io.wagger.api.codegen.languages.JavaJerseyServerCodegen", date = "2017-11-21T15:37:30.051+01:00")
+
+/**
+ * // TODO Add description
+ *
+ * @author Stephan Druskat <[mail@sdruskat.net](mailto:mail@sdruskat.net)>
+ * 
+ */
 public class StringUtil {
   /**
    * Check if the given array contains the given value (with case-insensitive comparison).

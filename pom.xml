@@ -122,6 +122,16 @@
       <artifactId>jersey-media-multipart</artifactId>
       <version>${jersey2-version}</version>
     </dependency>
+    <dependency>
+	    <groupId>org.glassfish.jersey.media</groupId>
+	    <artifactId>jersey-media-json-jackson</artifactId>
+	    <version>${jersey2-version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.glassfish.jersey.media</groupId>
+	    <artifactId>jersey-media-jaxb</artifactId>
+	    <version>${jersey2-version}</version>
+	</dependency>
   </dependencies>
   <repositories>
     <repository>
