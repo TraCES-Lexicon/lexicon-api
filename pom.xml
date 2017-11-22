@@ -3,7 +3,7 @@
   <groupId>de.uni_hamburg.traces.lexicon</groupId>
   <artifactId>api</artifactId>
   <packaging>jar</packaging>
-  <name>swagger-jaxrs-server</name>
+  <name>TraCES Ge'ez Lexicon API</name>
   <version>0.9.0-SNAPSHOT</version>
   <build>
     <sourceDirectory>src/main/java</sourceDirectory>
