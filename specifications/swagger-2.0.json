@@ -17,6 +17,7 @@
       "get" : {
         "summary" : "queries the API",
         "description" : "Query the API to return an accumulated result",
+        "consumes" : [ "application/vnd.traces.lexicon.query.v2+json" ],
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [ {
           "in" : "query",
