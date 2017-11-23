@@ -2,35 +2,31 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.uni_hamburg.traces.lexicon</groupId>
   <artifactId>api</artifactId>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
   <name>TraCES Ge'ez Lexicon API</name>
   <version>0.9.0</version>
+  
+  
+  <distributionManagement>
+  <repository>
+    <id>contabo</id>
+    <url>scp://dev.sdruskat.net/home/stephan/deploy</url>
+  </repository>
+</distributionManagement>
+  
+  
   <build>
+    <extensions>
+    <!-- Enabling the use of FTP -->
+    <extension>
+      <groupId>org.apache.maven.wagon</groupId>
+       <artifactId>wagon-ssh</artifactId>
+       <version>3.0.0</version>
+    </extension>
+  </extensions>
+  
     <sourceDirectory>src/main/java</sourceDirectory>
-    <!--  Change the name of the artifacts -->
     <plugins>
-      <!-- <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>3.0.2</version>
-      <executions>
-			<execution>
-            <phase>validate</phase>
-            <goals>
-              <goal>resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${basedir}/target/extra-resources</outputDirectory>
-              <resources>          
-                <resource>
-                  <directory>src/non-packaged-resources</directory>
-                  <filtering>true</filtering>
-                </resource>
-              </resources>              
-            </configuration>            
-			</execution>
-		</executions>
-      </plugin>-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
