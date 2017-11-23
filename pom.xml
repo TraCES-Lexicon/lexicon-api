@@ -4,7 +4,7 @@
   <artifactId>api</artifactId>
   <packaging>jar</packaging>
   <name>TraCES Ge'ez Lexicon API</name>
-  <version>0.9.0-SNAPSHOT</version>
+  <version>0.9.0</version>
   <build>
     <sourceDirectory>src/main/java</sourceDirectory>
     <!--  Change the name of the artifacts -->
