@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "An API that allows users to return accumulated results from different resources from their queries.\n## **NOTE** SNAPSHOT, Do not implement!\n## **NOTE** Will be superseded by https://swaggerhub.com/apis/sdruskat/traces-lexicon-api\n",
-    "version" : "0.9.0-SNAPSHOT",
+    "version" : "0.9.0",
     "title" : "Swagger 2.0 version of TraCES Ge'ez Lexicon API (unstable)",
     "contact" : {
       "name" : "Stephan Druskat",
@@ -27,7 +27,7 @@
         }, {
           "in" : "query",
           "name" : "translit",
-          "description" : "Whether the query string is a transliteration (true) or a Fidäl string (false, default)",
+          "description" : "Whether the query string is a transliteration (true) or a Fidal string (false, default)",
           "type" : "boolean",
           "required" : false,
           "default" : false
@@ -54,7 +54,7 @@
           "type" : "string",
           "example" : "በስመ፡"
         },
-        "fidael" : {
+        "fidal" : {
           "type" : "string",
           "example" : "በስመ፡"
         },
@@ -66,6 +66,6 @@
     }
   },
   "host" : "virtserver.swaggerhub.com",
-  "basePath" : "/sdruskat/traces-lexicon-api-swagger-2.0/0.9.0-SNAPSHOT",
+  "basePath" : "/sdruskat/traces-lexicon-api-swagger-2.0/0.9.0",
   "schemes" : [ "https" ]
 }

@@ -29,7 +29,7 @@
         }, {
           "name" : "translit",
           "in" : "query",
-          "description" : "Whether the query string is a transliteration (true) or a Fidäl string (false, default)",
+          "description" : "Whether the query string is a transliteration (true) or a Fidal string (false, default)",
           "schema" : {
             "type" : "boolean",
             "default" : true,
@@ -65,7 +65,7 @@
             "type" : "string",
             "example" : "በስመ፡"
           },
-          "fidael" : {
+          "fidal" : {
             "type" : "string",
             "example" : "በስመ፡"
           },

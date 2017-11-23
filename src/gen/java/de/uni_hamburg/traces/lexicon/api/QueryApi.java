@@ -38,7 +38,7 @@ public class QueryApi  {
     @io.swagger.annotations.ApiOperation(value = "queries the API", notes = "Query the API to return an accumulated result", response = Result.class, tags={  })
     @io.swagger.annotations.ApiResponses(value = {@io.swagger.annotations.ApiResponse(code = 200, message = "search results matching criteria", response = Result.class), @io.swagger.annotations.ApiResponse(code = 400, message = "bad input parameter", response = Result.class) })
     public Response queryGet(@ApiParam(value = "The query string",required=true) @QueryParam("string") String string,
-    		@ApiParam(value = "Whether the query string is a transliteration (true) or a Fidäl string (false, default)", defaultValue="false") @DefaultValue("false") @QueryParam("translit") Boolean translit,
+    		@ApiParam(value = "Whether the query string is a transliteration (true) or a Fidal string (false, default)", defaultValue="false") @DefaultValue("false") @QueryParam("translit") Boolean translit,
     		@Context SecurityContext securityContext) 
     				throws NotFoundException {
         return delegate.queryGet(string,translit,securityContext);
