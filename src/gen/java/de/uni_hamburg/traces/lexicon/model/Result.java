@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
 public class Result {
 	private String query = null;
 
-	private String fidael = null;
+	private String fidal = null;
 
 	private String transliteration = null;
 
@@ -50,31 +50,31 @@ public class Result {
 	/**
 	 * // TODO Add description
 	 * 
-	 * @param fidael
+	 * @param fidal
 	 * @return
 	 */
-	public Result fidael(String fidael) {
-		this.fidael = fidael;
+	public Result fidal(String fidal) {
+		this.fidal = fidal;
 		return this;
 	}
 
 	/**
-	 * Get fidael
+	 * Get fidal
 	 * 
-	 * @return fidael
+	 * @return fidal
 	 **/
 	@ApiModelProperty(example = "በስመ፡", value = "")
-	public String getFidael() {
-		return fidael;
+	public String getFidal() {
+		return fidal;
 	}
 
 	/**
 	 * // TODO Add description
 	 * 
-	 * @param fidael
+	 * @param fidal
 	 */
-	public void setFidael(String fidael) {
-		this.fidael = fidael;
+	public void setFidal(String fidal) {
+		this.fidal = fidal;
 	}
 
 	/**
@@ -116,13 +116,13 @@ public class Result {
 			return false;
 		}
 		Result result = (Result) o;
-		return Objects.equals(this.query, result.query) && Objects.equals(this.fidael, result.fidael)
+		return Objects.equals(this.query, result.query) && Objects.equals(this.fidal, result.fidal)
 				&& Objects.equals(this.transliteration, result.transliteration);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(query, fidael, transliteration);
+		return Objects.hash(query, fidal, transliteration);
 	}
 
 	@Override
@@ -131,7 +131,7 @@ public class Result {
 		sb.append("class Result {\n");
 
 		sb.append("    query: ").append(toIndentedString(query)).append("\n");
-		sb.append("    fidael: ").append(toIndentedString(fidael)).append("\n");
+		sb.append("    fidal: ").append(toIndentedString(fidal)).append("\n");
 		sb.append("    transliteration: ").append(toIndentedString(transliteration)).append("\n");
 		sb.append("}");
 		return sb.toString();
