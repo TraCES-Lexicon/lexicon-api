@@ -5,26 +5,21 @@
   <packaging>war</packaging>
   <name>TraCES Ge'ez Lexicon API</name>
   <version>0.9.0</version>
-  
-  
   <distributionManagement>
-  <repository>
-    <id>contabo</id>
-    <url>scp://dev.sdruskat.net/home/stephan/deploy</url>
-  </repository>
-</distributionManagement>
-  
-  
+    <repository>
+      <id>contabo</id>
+      <url>scp://dev.sdruskat.net/home/stephan/deploy</url>
+    </repository>
+  </distributionManagement>
   <build>
     <extensions>
-    <!-- Enabling the use of FTP -->
-    <extension>
-      <groupId>org.apache.maven.wagon</groupId>
-       <artifactId>wagon-ssh</artifactId>
-       <version>3.0.0</version>
-    </extension>
-  </extensions>
-  
+      <!-- Enabling the use of FTP -->
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-ssh</artifactId>
+        <version>3.0.0</version>
+      </extension>
+    </extensions>
     <sourceDirectory>src/main/java</sourceDirectory>
     <plugins>
       <plugin>
@@ -32,18 +27,18 @@
         <artifactId>maven-war-plugin</artifactId>
         <version>3.2.0</version>
         <configuration>
-        <webResources>
+          <webResources>
             <resource>
-                <filtering>true</filtering>
-                <directory>src/main/webapp</directory>
-                <includes>
-                    <include>**/web.xml</include>
-                </includes>
+              <filtering>true</filtering>
+              <directory>src/main/webapp</directory>
+              <includes>
+                <include>**/web.xml</include>
+              </includes>
             </resource>
-        </webResources>
-        <warSourceDirectory>src/main/webapp</warSourceDirectory>
-        <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
-    </configuration>
+          </webResources>
+          <warSourceDirectory>src/main/webapp</warSourceDirectory>
+          <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+        </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-failsafe-plugin</artifactId>
@@ -119,15 +114,21 @@
       <version>${jersey2-version}</version>
     </dependency>
     <dependency>
-	    <groupId>org.glassfish.jersey.media</groupId>
-	    <artifactId>jersey-media-json-jackson</artifactId>
-	    <version>${jersey2-version}</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.glassfish.jersey.media</groupId>
-	    <artifactId>jersey-media-jaxb</artifactId>
-	    <version>${jersey2-version}</version>
-	</dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-json-jackson</artifactId>
+      <version>${jersey2-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-jaxb</artifactId>
+      <version>${jersey2-version}</version>
+    </dependency>
+    <!-- Base64 encoding that works in both JVM and Android -->
+    <dependency>
+      <groupId>com.brsanthu</groupId>
+      <artifactId>migbase64</artifactId>
+      <version>2.2</version>
+    </dependency>
   </dependencies>
   <repositories>
     <repository>
@@ -139,7 +140,7 @@
     </repository>
   </repositories>
   <properties>
-    <java.version>1.7</java.version>
+    <java.version>1.8</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <swagger-core-version>1.5.9</swagger-core-version>
