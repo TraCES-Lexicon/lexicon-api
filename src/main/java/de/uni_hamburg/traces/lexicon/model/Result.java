@@ -26,6 +26,9 @@
 package de.uni_hamburg.traces.lexicon.model;
 
 import java.util.Objects;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
@@ -34,7 +37,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * Result
  */
-
+@XmlRootElement
 public class Result   {
   @JsonProperty("query")
   private String query = null;
