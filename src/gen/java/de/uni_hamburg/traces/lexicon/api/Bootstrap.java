@@ -24,8 +24,8 @@ public class Bootstrap extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		Info info = new Info().title("TraCES Ge'ez Lexicon API").description(
 				"An API that allows users to return accumulated results from different resources from their queries. ## **NOTE** SNAPSHOT, Do not implement! ## **NOTE** Will be superseded by https://swaggerhub.com/apis/sdruskat/traces-lexicon-api/1.0.0-SNAPSHOT ")
-				.termsOfService("").contact(new Contact().email(""))
-				.license(new License().name("License: tba").url(""));
+				.contact(new Contact().name("Stephan Druskat").url("http://sdruskat.net"))
+				.license(new License().name("License: tba"));
 
 		ServletContext context = config.getServletContext();
 		Swagger swagger = new Swagger().info(info);
