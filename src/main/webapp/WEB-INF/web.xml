@@ -38,7 +38,7 @@
         </init-param>
         <init-param>
             <param-name>swagger.api.basepath</param-name>
-            <param-value>https://dev.sdruskat.net/lexicon/api/0.9.0"</param-value>
+            <param-value>https://dev.sdruskat.net/lexicon/api/v0.9.0</param-value>
         </init-param>
 
         <load-on-startup>2</load-on-startup>
@@ -51,9 +51,8 @@
     <servlet-mapping>
         <servlet-name>jersey</servlet-name>
         <!-- Uncomment for building the deployable WAR file where the variable will be replaced by the actual version number -->
-        <!-- <url-pattern>/api/v${api.version}/*</url-pattern> -->
-        <!-- <url-pattern>/api/v0/*</url-pattern> -->
-        <url-pattern>/api/v${api.version}/*</url-pattern>
+<!--         <url-pattern>/api/v${api.version}/*</url-pattern> -->
+        <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
     <filter>
         <filter-name>ApiOriginFilter</filter-name>

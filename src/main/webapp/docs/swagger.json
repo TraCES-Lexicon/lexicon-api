@@ -1,0 +1,72 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "An API that allows users to return accumulated results from different resources from their queries.\n## **NOTE** SNAPSHOT, Do not implement!\n## **NOTE** Will be superseded by https://swaggerhub.com/apis/sdruskat/traces-lexicon-api\n",
+    "version" : "0.9.0",
+    "title" : "Swagger 2.0 version of TraCES Ge'ez Lexicon API (unstable)",
+    "contact" : {
+      "name" : "Stephan Druskat",
+      "url" : "http://sdruskat.net",
+      "email" : "please@see.url"
+    },
+    "license" : {
+      "name" : "License: tba"
+    }
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/sdruskat/traces-lexicon-api-swagger-2.0/0.9.0",
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/query" : {
+      "get" : {
+        "summary" : "queries the API",
+        "description" : "Query the API to return an accumulated result",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "string",
+          "in" : "query",
+          "description" : "The query string",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "translit",
+          "in" : "query",
+          "description" : "Whether the query string is a transliteration (true) or a Fidal string (false, default)",
+          "required" : false,
+          "type" : "boolean",
+          "default" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "schema" : {
+              "$ref" : "#/definitions/result"
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "result" : {
+      "type" : "object",
+      "properties" : {
+        "query" : {
+          "type" : "string",
+          "example" : "በስመ፡"
+        },
+        "fidal" : {
+          "type" : "string",
+          "example" : "በስመ፡"
+        },
+        "transliteration" : {
+          "type" : "string",
+          "example" : "ba-sǝma"
+        }
+      }
+    }
+  }
+}
