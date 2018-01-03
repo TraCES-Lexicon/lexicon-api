@@ -1,8 +1,6 @@
 package de.uni_hamburg.traces.lexicon.api.factories;
 
-import de.uni_hamburg.traces.lexicon.api.QueueApiService;
 import de.uni_hamburg.traces.lexicon.api.ResultsApiService;
-import de.uni_hamburg.traces.lexicon.api.impl.QueueApiServiceImpl;
 import de.uni_hamburg.traces.lexicon.api.impl.ResultsApiServiceImpl;
 
 

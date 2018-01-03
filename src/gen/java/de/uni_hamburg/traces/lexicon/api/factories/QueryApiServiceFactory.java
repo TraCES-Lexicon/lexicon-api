@@ -8,7 +8,6 @@ public class QueryApiServiceFactory {
     private final static QueryApiService service = new QueryApiServiceImpl();
 
     public static QueryApiService getQueryApi() {
-//    	service.init();
         return service;
     }
 }
