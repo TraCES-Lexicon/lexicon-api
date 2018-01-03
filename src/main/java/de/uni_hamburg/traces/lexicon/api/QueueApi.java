@@ -11,6 +11,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
+import javax.ws.rs.core.UriInfo;
 
 import de.uni_hamburg.traces.lexicon.api.factories.QueueApiServiceFactory;
 import io.swagger.annotations.Api;
@@ -57,7 +58,7 @@ public class QueueApi {
 			
 			@io.swagger.annotations.ApiResponse(code = 404, message = "Invalid queue UUID.", response = Void.class) })
 	public Response queueUuidGet(@ApiParam(value = "", required = true) @PathParam("uuid") String uuid,
-			@Context SecurityContext securityContext, @Context HttpServletRequest request) throws NotFoundException {
-		return delegate.queueUuidGet(request, uuid, securityContext);
+			@Context SecurityContext securityContext, @Context HttpServletRequest request, @Context UriInfo uriInfo) throws NotFoundException {
+		return delegate.queueUuidGet(request, uuid, securityContext, uriInfo);
 	}
 }

@@ -2,6 +2,8 @@ package de.uni_hamburg.traces.lexicon.api.impl;
 
 import de.uni_hamburg.traces.lexicon.api.*;
 import de.uni_hamburg.traces.lexicon.api.internal.QueryJob;
+
+import java.net.URI;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
@@ -10,6 +12,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
+import javax.ws.rs.core.UriInfo;
 
 /**
  * // TODO Add description
@@ -22,7 +25,7 @@ public class QueryApiServiceImpl extends QueryApiService {
 	@Path("query")
 	@Override
 	public Response queryGet(@Context HttpServletRequest request, @QueryParam("string") String queryString, @QueryParam("translit") Boolean translit,
-			SecurityContext securityContext) throws NotFoundException {
+			SecurityContext securityContext, @Context UriInfo uriInfo) throws NotFoundException {
 		QueryJob job = new QueryJob();
 		UUID uuid = UUID.randomUUID();
 		job.setUuid(uuid.toString());
@@ -32,8 +35,9 @@ public class QueryApiServiceImpl extends QueryApiService {
 		try {
 			queryWorker.getQueryQueue().put(job);
 			// 202 ACCEPTED
+			URI uri = uriInfo.getBaseUriBuilder().path("queue/" + uuid).build();
 			return Response.status(Response.Status.ACCEPTED)
-					.header("Location", request.getContextPath() + "/api/queue/" + uuid.toString()).build();
+					.header("Location", uri).build();
 		}
 		catch (InterruptedException ex) {
 			return Response.serverError()

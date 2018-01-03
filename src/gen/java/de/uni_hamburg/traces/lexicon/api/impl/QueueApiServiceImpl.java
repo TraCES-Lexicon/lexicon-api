@@ -1,13 +1,13 @@
 package de.uni_hamburg.traces.lexicon.api.impl;
 
-import java.net.URI;
+import java.net.URI; 
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.SecurityContext;
-import javax.ws.rs.core.UriBuilder;
+import javax.ws.rs.core.UriInfo;
 
 import de.uni_hamburg.traces.lexicon.api.NotFoundException;
 import de.uni_hamburg.traces.lexicon.api.QueueApiService;
@@ -17,7 +17,7 @@ import de.uni_hamburg.traces.lexicon.model.Result;
 public class QueueApiServiceImpl extends QueueApiService {
 
 	@Override
-	public Response queueUuidGet(HttpServletRequest request, String uuid, SecurityContext securityContext) throws NotFoundException {
+	public Response queueUuidGet(HttpServletRequest request, String uuid, SecurityContext securityContext, UriInfo uriInfo) throws NotFoundException {
 		// Check if the UUID is valid at all
 		try {
 			UUID.fromString(uuid);
@@ -34,7 +34,7 @@ public class QueueApiServiceImpl extends QueueApiService {
 		}
 		else if (result != null) {
 			// Finished, see other 303
-			URI uri = UriBuilder.fromPath(request.getContextPath() + "/api/results/" + uuid).build();
+			URI uri = uriInfo.getBaseUriBuilder().path("results/" + uuid).build();
 			return Response.seeOther(uri).build();
 		}
 		else {
