@@ -14,11 +14,22 @@ import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 
+/**
+ * // TODO Add description
+ *
+ * @author Stephan Druskat <[mail@sdruskat.net](mailto:mail@sdruskat.net)>
+ * 
+ */
 @Path("/query")
 @Api
 public class QueryApi {
 	private final QueryApiService delegate;
 
+	/**
+	 * // TODO Add description
+	 * 
+	 * @param servletContext
+	 */
 	public QueryApi(@Context ServletConfig servletContext) {
 		QueryApiService delegate = null;
 
@@ -41,6 +52,17 @@ public class QueryApi {
 		this.delegate = delegate;
 	}
 
+	/**
+	 * // TODO Add description
+	 * 
+	 * @param string
+	 * @param translit
+	 * @param securityContext
+	 * @param request
+	 * @param uriInfo
+	 * @return
+	 * @throws NotFoundException
+	 */
 	@GET
 	@io.swagger.annotations.ApiOperation(value = "queries the API", notes = "Query the API to return an accumulated result", response = Void.class, tags = {})
 	@io.swagger.annotations.ApiResponses(value = {

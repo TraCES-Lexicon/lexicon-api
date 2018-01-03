@@ -1,9 +1,9 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "description" : "An API that allows users to return accumulated results from different resources from their queries.\n## **NOTE** SNAPSHOT, Do not implement!\n## **NOTE** Will be superseded by https://swaggerhub.com/apis/sdruskat/traces-lexicon-api\n## NOTE TEST\n",
-    "version" : "0.9.1",
-    "title" : "Swagger 2.0 version of TraCES Ge'ez Lexicon API (unstable)",
+    "description" : "This API provides access to the TraCES Ge'ez lexicon.\n\nIts entry endpoint is `/query`, which takes two parameters:\n\n- `string` (String): The string to query the lexicon for. This can be either Fidäl (default) or a transliteration.\n- `translit` (Boolean): Specifies whether `string` is a transliteration (default: false).\n\nThe resulting data is returned as either JSON or XML.\n\n### Workflow\n\nA valid query against `/query` returns a **202 Accepted** status code, meaning that the query has been accepted and has been placed in the processing queue. The response contains a *Location* header with a URL pointing to the queued query object at the `/queue` endpoint, qualified by a UUID. This URL can be polled by clients. As long as the query is not processed, it will return a **204 No Content** status code. Once the query is finished and the result object has been compiled, it will return a **303 See Other** redirection to the respective `/results` endpoint, qualified by the same UUID, which will return a **200 OK** status code and the requested data as *application/json** or **application/xml**. The result object is available for 10 seconds before it expires.\n",
+    "version" : "0.9.0",
+    "title" : "TraCES Ge'ez Lexicon API",
     "contact" : {
       "name" : "Stephan Druskat",
       "url" : "http://sdruskat.net"
@@ -18,12 +18,12 @@
   "paths" : {
     "/query" : {
       "get" : {
-        "summary" : "queries the API",
-        "description" : "Query the API to return an accumulated result",
+        "summary" : "Query the lexicon",
+        "description" : "Accepts valid queries with the parameters detailed below.",
         "parameters" : [ {
           "name" : "string",
           "in" : "query",
-          "description" : "The query string",
+          "description" : "The query string in Fidäl or as transcription",
           "required" : true,
           "type" : "string"
         }, {
@@ -36,18 +36,18 @@
         } ],
         "responses" : {
           "202" : {
-            "description" : "Accepted query"
+            "description" : "Query is valid and has been accepted."
           },
           "400" : {
-            "description" : "bad input parameter"
+            "description" : "Bad input parameter, e.g., undefined parameters or values."
           }
         }
       }
     },
     "/queue/{uuid}" : {
       "get" : {
-        "summary" : "Returns queued query items",
-        "description" : "Provides access to the queue of query items",
+        "summary" : "Access the query object on the processing queue",
+        "description" : "Returns the contents of the query result, or no content if processing has not finished.",
         "parameters" : [ {
           "name" : "uuid",
           "in" : "path",
@@ -56,27 +56,27 @@
         } ],
         "responses" : {
           "204" : {
-            "description" : "No content. Query is still processing."
+            "description" : "No content available, query is still processing."
           },
           "303" : {
-            "description" : "Query finished, see result URI."
+            "description" : "Query processing has finished, redirects to the final result object."
           },
           "400" : {
-            "description" : "Illegal query UUID"
+            "description" : "An illegal query UUID has been supplied."
           },
           "404" : {
-            "description" : "Query with this UUID not found in queue."
+            "description" : "A query with this UUID cannot be found in the processing queue."
           },
           "410" : {
-            "description" : "Query is not queued anymore."
+            "description" : "The query is no longer available on the processing queue."
           }
         }
       }
     },
     "/results/{uuid}" : {
       "get" : {
-        "summary" : "Returns a result",
-        "description" : "Provides access to the finished result objects",
+        "summary" : "Access the final query result",
+        "description" : "Returns the query result object either as *application/json* or *application/xml*.",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [ {
           "name" : "uuid",
@@ -86,19 +86,19 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Success",
+            "description" : "Success, the query result is being returned in the response.",
             "schema" : {
               "$ref" : "#/definitions/result"
             }
           },
           "400" : {
-            "description" : "Illegal result UUID"
+            "description" : "An illegal result UUID has been supplied."
           },
           "404" : {
-            "description" : "Result with UUID cannot be found."
+            "description" : "A result with this UUID cannot be found."
           },
           "410" : {
-            "description" : "Result is not available anymore."
+            "description" : "The result has expired and is no longer available."
           }
         }
       }

@@ -15,12 +15,23 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.*;
 
+/**
+ * // TODO Add description
+ *
+ * @author Stephan Druskat <[mail@sdruskat.net](mailto:mail@sdruskat.net)>
+ * 
+ */
 @Path("/results")
 @Api
 
 public class ResultsApi {
 	private final ResultsApiService delegate;
 
+	/**
+	 * // TODO Add description
+	 * 
+	 * @param servletContext
+	 */
 	public ResultsApi(@Context ServletConfig servletContext) {
 		ResultsApiService delegate = null;
 
@@ -43,6 +54,14 @@ public class ResultsApi {
 		this.delegate = delegate;
 	}
 
+	/**
+	 * // TODO Add description
+	 * 
+	 * @param uuid
+	 * @param securityContext
+	 * @return
+	 * @throws NotFoundException
+	 */
 	@GET
 	@Path("/{uuid}")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})

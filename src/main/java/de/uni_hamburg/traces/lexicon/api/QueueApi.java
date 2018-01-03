@@ -17,11 +17,22 @@ import de.uni_hamburg.traces.lexicon.api.factories.QueueApiServiceFactory;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
 
+/**
+ * // TODO Add description
+ *
+ * @author Stephan Druskat <[mail@sdruskat.net](mailto:mail@sdruskat.net)>
+ * 
+ */
 @Path("/queue")
 @Api
 public class QueueApi {
 	private final QueueApiService delegate;
 
+	/**
+	 * // TODO Add description
+	 * 
+	 * @param servletContext
+	 */
 	public QueueApi(@Context ServletConfig servletContext) {
 		QueueApiService delegate = null;
 
@@ -44,6 +55,16 @@ public class QueueApi {
 		this.delegate = delegate;
 	}
 
+	/**
+	 * // TODO Add description
+	 * 
+	 * @param uuid
+	 * @param securityContext
+	 * @param request
+	 * @param uriInfo
+	 * @return
+	 * @throws NotFoundException
+	 */
 	@GET
 	@Path("/{uuid}")
 	@io.swagger.annotations.ApiOperation(value = "Returns queued query items", notes = "Provides access to the queue of query items", response = Void.class, tags = {})
