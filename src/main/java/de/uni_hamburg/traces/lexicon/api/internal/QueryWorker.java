@@ -54,7 +54,6 @@ public class QueryWorker extends Thread {
 				final String uuid = job.getUuid();
 				runningJobs.put(uuid, job);
 				Result result = buildResult(job);
-				Thread.sleep(15000);
 				job.setStatus(Status.SUCCESS);
 				results.put(uuid, result);
 				boolean jobIsRemoved = runningJobs.remove(uuid, job);
