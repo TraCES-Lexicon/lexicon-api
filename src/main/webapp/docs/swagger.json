@@ -13,7 +13,7 @@
     }
   },
   "host" : "dev.sdruskat.net",
-  "basePath" : "/lexicon/0.9.0",
+  "basePath" : "/lexicon/api/0.9.0",
   "schemes" : [ "https" ],
   "paths" : {
     "/query" : {
