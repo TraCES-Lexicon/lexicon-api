@@ -9,6 +9,7 @@ import de.uni_hamburg.traces.lexicon.api.NotFoundException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
+import javax.ws.rs.core.UriInfo;
 import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
@@ -47,42 +48,7 @@ public class QueryApi {
 			@io.swagger.annotations.ApiResponse(code = 400, message = "bad input parameter", response = Void.class) })
 	public Response queryGet(@ApiParam(value = "The query string", required = true) @QueryParam("string") String string,
 			@ApiParam(value = "Whether the query string is a transliteration (true) or a Fidal string (false, default)", defaultValue = "false") @DefaultValue("false") @QueryParam("translit") Boolean translit,
-			@Context SecurityContext securityContext, @Context HttpServletRequest request) throws NotFoundException {
-		return delegate.queryGet(request, string, translit, securityContext);
+			@Context SecurityContext securityContext, @Context HttpServletRequest request, @Context UriInfo uriInfo) throws NotFoundException {
+		return delegate.queryGet(request, string, translit, securityContext, uriInfo);
 	}
 }
-
-
-///**
-// * // TODO Add description
-// *
-// * @author Stephan Druskat <[mail@sdruskat.net](mailto:mail@sdruskat.net)>
-// * 
-// */
-//@Path("/query")
-//@Api
-//public class QueryApi {
-//	private final QueryApiService delegate = QueryApiServiceFactory.getQueryApi();
-//
-//	/**
-//	 * // TODO Add description
-//	 * 
-//	 * @param string
-//	 * @param translit
-//	 * @param securityContext
-//	 * @return
-//	 * @throws NotFoundException
-//	 */
-//	@GET
-//	@Produces({ "application/json", "application/xml" })
-//	@io.swagger.annotations.ApiOperation(value = "queries the API", notes = "Query the API to return an accumulated result", response = Result.class, tags = {})
-//	@io.swagger.annotations.ApiResponses(value = {
-//			@io.swagger.annotations.ApiResponse(code = 200, message = "search results matching criteria", response = Result.class),
-//
-//			@io.swagger.annotations.ApiResponse(code = 400, message = "bad input parameter", response = Result.class) })
-//	public Response queryGet(@ApiParam(value = "The query string", required = true) @QueryParam("string") String string,
-//			@ApiParam(value = "Whether the query string is a transliteration (true) or a Fidal string (false, default)", defaultValue = "false") @DefaultValue("false") @QueryParam("translit") Boolean translit,
-//			@Context SecurityContext securityContext, @Context HttpServletRequest request) throws NotFoundException {
-//		return delegate.queryGet(request, string, translit, securityContext);
-//	}
-//}
