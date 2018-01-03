@@ -31,4 +31,9 @@ public class Bootstrap extends HttpServlet {
 
 		new SwaggerContextService().withServletConfig(config).updateSwagger(swagger);
 	}
+	
+	@Override
+	public void destroy() {
+		System.out.println("DESTROY!");
+	}
 }

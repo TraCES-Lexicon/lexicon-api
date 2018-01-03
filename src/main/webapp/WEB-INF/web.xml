@@ -51,7 +51,7 @@
     <servlet-mapping>
         <servlet-name>jersey</servlet-name>
         <!-- Uncomment for building the deployable WAR file where the variable will be replaced by the actual version number -->
-<!--         <url-pattern>/api/v${api.version}/*</url-pattern> -->
+<!--         <url-pattern>/api/${api.version}/*</url-pattern> -->
         <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
     <filter>
