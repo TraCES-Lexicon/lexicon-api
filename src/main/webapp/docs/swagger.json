@@ -1,13 +1,12 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "description" : "An API that allows users to return accumulated results from different resources from their queries.\n## **NOTE** SNAPSHOT, Do not implement!\n## **NOTE** Will be superseded by https://swaggerhub.com/apis/sdruskat/traces-lexicon-api\n",
-    "version" : "0.9.0",
+    "description" : "An API that allows users to return accumulated results from different resources from their queries.\n## **NOTE** SNAPSHOT, Do not implement!\n## **NOTE** Will be superseded by https://swaggerhub.com/apis/sdruskat/traces-lexicon-api\n## NOTE TEST\n",
+    "version" : "0.9.1",
     "title" : "Swagger 2.0 version of TraCES Ge'ez Lexicon API (unstable)",
     "contact" : {
       "name" : "Stephan Druskat",
-      "url" : "http://sdruskat.net",
-      "email" : "please@see.url"
+      "url" : "http://sdruskat.net"
     },
     "license" : {
       "name" : "License: tba"
@@ -21,7 +20,6 @@
       "get" : {
         "summary" : "queries the API",
         "description" : "Query the API to return an accumulated result",
-        "produces" : [ "application/json", "application/xml" ],
         "parameters" : [ {
           "name" : "string",
           "in" : "query",
@@ -37,14 +35,70 @@
           "default" : false
         } ],
         "responses" : {
+          "202" : {
+            "description" : "Accepted query"
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    },
+    "/queue/{uuid}" : {
+      "get" : {
+        "summary" : "Returns queued query items",
+        "description" : "Provides access to the queue of query items",
+        "parameters" : [ {
+          "name" : "uuid",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "No content. Query is still processing."
+          },
+          "303" : {
+            "description" : "Query finished, see result URI."
+          },
+          "400" : {
+            "description" : "Illegal query UUID"
+          },
+          "404" : {
+            "description" : "Query with this UUID not found in queue."
+          },
+          "410" : {
+            "description" : "Query is not queued anymore."
+          }
+        }
+      }
+    },
+    "/results/{uuid}" : {
+      "get" : {
+        "summary" : "Returns a result",
+        "description" : "Provides access to the finished result objects",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "uuid",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
           "200" : {
-            "description" : "search results matching criteria",
+            "description" : "Success",
             "schema" : {
               "$ref" : "#/definitions/result"
             }
           },
           "400" : {
-            "description" : "bad input parameter"
+            "description" : "Illegal result UUID"
+          },
+          "404" : {
+            "description" : "Result with UUID cannot be found."
+          },
+          "410" : {
+            "description" : "Result is not available anymore."
           }
         }
       }
@@ -65,7 +119,17 @@
         "transliteration" : {
           "type" : "string",
           "example" : "ba-sǝma"
+        },
+        "uuid" : {
+          "type" : "string",
+          "example" : "Cf. https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html"
         }
+      },
+      "example" : {
+        "fidal" : "በስመ፡",
+        "query" : "በስመ፡",
+        "uuid" : "Cf. https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html",
+        "transliteration" : "ba-sǝma"
       }
     }
   }
